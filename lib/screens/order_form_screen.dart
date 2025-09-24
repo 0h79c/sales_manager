@@ -92,11 +92,12 @@ class _OrderFormScreenState extends State<OrderFormScreen> {
                     .collection("customers")
                     .snapshots(),
                 builder: (ctx, snapshot) {
-                  if (!snapshot.hasData)
+                  if (!snapshot.hasData) {
                     return const CircularProgressIndicator();
+                  }
                   final docs = snapshot.data!.docs;
                   return DropdownButtonFormField<String>(
-                    value: _selectedCustomer,
+                    initialValue: _selectedCustomer,
                     items: docs.map((doc) {
                       final data = doc.data() as Map<String, dynamic>;
                       return DropdownMenuItem(
@@ -117,11 +118,12 @@ class _OrderFormScreenState extends State<OrderFormScreen> {
                     .collection("products")
                     .snapshots(),
                 builder: (ctx, snapshot) {
-                  if (!snapshot.hasData)
+                  if (!snapshot.hasData) {
                     return const CircularProgressIndicator();
+                  }
                   final docs = snapshot.data!.docs;
                   return DropdownButtonFormField<String>(
-                    value: _selectedProduct,
+                    initialValue: _selectedProduct,
                     items: docs.map((doc) {
                       final data = doc.data() as Map<String, dynamic>;
                       return DropdownMenuItem(
