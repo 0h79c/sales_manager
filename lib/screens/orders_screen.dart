@@ -13,8 +13,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
   final _totalController = TextEditingController();
 
   Future<void> _addOrder() async {
-    if (_customerController.text.isEmpty || _totalController.text.isEmpty)
+    if (_customerController.text.isEmpty || _totalController.text.isEmpty) {
       return;
+    }
     await FirebaseFirestore.instance.collection("orders").add({
       "customer": _customerController.text,
       "total": double.tryParse(_totalController.text) ?? 0,
